@@ -1,0 +1,29 @@
+name: Release Chocolatey Package
+
+on:
+  repository_dispatch:
+    types: [choco-release]
+
+jobs:
+  chocoRelease:
+      runs-on: ubuntu-latest
+      steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Find and Replace Version templates
+        run: grep -rl ${VERSION} . --exclude .git | xargs sed -i 's/${VERSION}/${{github.event.client_payload.version}}/g'
+
+      - name: Choco Pack
+        uses: crazy-max/ghaction-chocolatey@v1.5.0
+        with:
+          args: pack
+
+      - name: Choco Push
+        uses: crazy-max/ghaction-chocolatey@v1.5.0
+        with:
+          args: push -k ${{ secrets.CHOCO_API_KEY }} -s https://push.chocolatey.org/ nitric.${{github.event.client_payload.version}}.nupkg
+
+
