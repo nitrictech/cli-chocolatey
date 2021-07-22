@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- Read this before creating packages: https://chocolatey.org/docs/create-packages -->
 <!-- It is especially important to read the above link to understand additional requirements when publishing packages to the community feed aka dot org (https://chocolatey.org/packages). -->
 
@@ -36,11 +36,10 @@ This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Refe
     <summary>CLI tool for nitric</summary>
     <description>
       # nitric
-
-      For further information and documentation visit [nitric.io](https://nitric.io)
+      CLI tool for management and deployment of applications built with nitric
     </description>
     <releaseNotes>
-     # [RELEASE NOTES](https://github.com/nitrictech/cli/releases/tag/v${VERSION})
+     # [RELEASE NOTES](https://github.com/nitrictech/cli/releases/tag/v0.0.63)
     </releaseNotes>
   </metadata>
   <files>
